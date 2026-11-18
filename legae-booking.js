@@ -236,9 +236,12 @@ document.querySelectorAll('[data-booking]').forEach((link) => {
 });
 updateBookingType();
 
-function openLinkedDetails() {
-  const target = document.getElementById(window.location.hash.slice(1));
-  if (target instanceof HTMLDetailsElement) target.open = true;
+function openLinkedDetails(target = document.getElementById(window.location.hash.slice(1))) {
+  let details = target?.closest('details');
+  while (details) {
+    details.open = true;
+    details = details.parentElement?.closest('details');
+  }
 }
 document.querySelectorAll('a[href="#calendar"]').forEach((link) => {
   link.addEventListener('click', (event) => {
@@ -248,13 +251,13 @@ document.querySelectorAll('a[href="#calendar"]').forEach((link) => {
     }
   });
 });
-document.querySelectorAll('a[href="#experiences"]').forEach((link) => {
+document.querySelectorAll('a[href^="#"]').forEach((link) => {
   link.addEventListener('click', (event) => {
-    if (isPlainClick(event)) document.getElementById('experiences').open = true;
+    if (isPlainClick(event)) openLinkedDetails(document.getElementById(link.hash.slice(1)));
   });
 });
 calendarPanel.addEventListener('toggle', refreshBookingPrefill);
-window.addEventListener('hashchange', openLinkedDetails);
+window.addEventListener('hashchange', () => openLinkedDetails());
 openLinkedDetails();
 
 const menuButton = document.querySelector('.menu-toggle');
@@ -273,6 +276,48 @@ document.querySelector('.header').addEventListener('keydown', (event) => {
     menuButton.focus();
   }
 });
+
+const hero = document.querySelector('.hero');
+const heroSlides = [...hero.querySelectorAll('.hero-slide')];
+const heroPause = document.querySelector('#hero-pause');
+const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+let heroPhotoIndex = 0;
+let heroPaused = reducedMotion.matches;
+
+function showHeroPhoto(index) {
+  heroPhotoIndex = (index + heroSlides.length) % heroSlides.length;
+  heroSlides.forEach((slide, slideIndex) => {
+    const active = slideIndex === heroPhotoIndex;
+    slide.classList.toggle('is-active', active);
+    slide.setAttribute('aria-hidden', String(!active));
+  });
+}
+
+function updateHeroPause() {
+  heroPause.textContent = heroPaused ? 'Play photos' : 'Pause photos';
+  heroPause.setAttribute('aria-pressed', String(heroPaused));
+}
+
+hero.querySelector('.hero-controls').hidden = false;
+showHeroPhoto(0);
+updateHeroPause();
+document.querySelector('#hero-previous').addEventListener('click', () => showHeroPhoto(heroPhotoIndex - 1));
+document.querySelector('#hero-next').addEventListener('click', () => showHeroPhoto(heroPhotoIndex + 1));
+heroPause.addEventListener('click', () => {
+  heroPaused = !heroPaused;
+  updateHeroPause();
+});
+reducedMotion.addEventListener('change', (event) => {
+  if (event.matches) {
+    heroPaused = true;
+    updateHeroPause();
+  }
+});
+window.setInterval(() => {
+  if (!heroPaused && !document.hidden && !hero.matches(':focus-within')) {
+    showHeroPhoto(heroPhotoIndex + 1);
+  }
+}, 6500);
 
 const gallery = [...document.querySelectorAll('.gallery-grid a')];
 const photoDialog = document.querySelector('#photo-dialog');
