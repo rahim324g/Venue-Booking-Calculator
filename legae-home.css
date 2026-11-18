@@ -372,3 +372,7 @@ body:has(dialog[open]) { overflow: hidden; }
 }
 
 .info-card#reviews { --card-photo: url("https://i.postimg.cc/SRWRfpmp/IMG-8664.jpg"); }
+
+.review-actions { display: flex; align-items: center; flex-wrap: wrap; gap: 12px 20px; margin-top: 22px; }
+.review-actions .review-source { margin-top: 0; }
+.review-help { margin-top: 10px; color: var(--muted); font-size: 13px; }
