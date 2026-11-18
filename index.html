@@ -338,7 +338,10 @@
     <details class="info-card" id="reviews" name="property-information">
       <summary><h2 id="reviews-title">Guest reviews</h2></summary>
       <div class="info-card-content">
-        <p class="review-intro">Guest review excerpts from SimplyBook.</p>
+        <p class="review-intro">Guest comments about Legae Garden Home.</p>
+        <div id="published-reviews" class="review-grid" aria-label="Published guest reviews"></div>
+        <p id="review-load-status" class="review-help" role="status"></p>
+        <button class="button outline" id="more-guest-reviews" type="button" hidden>More reviews</button>
         <div class="review-grid">
           <figure class="review-quote">
             <blockquote><p>“Affordable, peaceful, clean, exotic”</p></blockquote>
@@ -353,11 +356,19 @@
             <figcaption>Cain Johnson</figcaption>
           </figure>
         </div>
-        <div class="review-actions">
-          <a class="button green" href="https://legaegardenhome1.simplybook.me/v2/reviews/" target="_blank" rel="noopener">Write a review <svg class="icon" aria-hidden="true"><use href="#i-out"/></svg></a>
-          <a class="text-link review-source" href="https://legaegardenhome1.simplybook.me/v2/reviews/" target="_blank" rel="noopener">Read all reviews on SimplyBook <svg class="icon" aria-hidden="true"><use href="#i-out"/></svg></a>
-        </div>
-        <p class="review-help">To share your feedback, select Add review on SimplyBook and sign in.</p>
+        <form class="guest-review-form" id="guest-review-form" aria-labelledby="guest-review-form-title" hidden>
+          <h3 id="guest-review-form-title">Write a review</h3>
+          <div class="guest-review-fields">
+            <div class="booking-field"><label for="review-name">Your name</label><input id="review-name" name="guestName" type="text" maxlength="80" autocomplete="name" required></div>
+            <div class="booking-field"><label for="review-rating">Overall rating</label><select id="review-rating" name="rating" required><option value="" selected disabled>Choose a rating</option><option value="5">5 — Excellent</option><option value="4">4 — Very good</option><option value="3">3 — Good</option><option value="2">2 — Fair</option><option value="1">1 — Poor</option></select></div>
+          </div>
+          <div class="booking-field"><label for="review-title">Review title (optional)</label><input id="review-title" name="title" type="text" maxlength="120"></div>
+          <div class="booking-field"><label for="review-comment">Your review</label><textarea id="review-comment" name="comment" rows="4" maxlength="2000" required></textarea></div>
+          <p class="review-help">Your name and review may appear on this website after approval.</p>
+          <button class="button green" id="submit-guest-review" type="submit">Submit review</button>
+          <p id="guest-review-status" class="guest-review-status" role="status"></p>
+        </form>
+        <noscript><p class="review-help">Enable JavaScript to submit a review.</p></noscript>
       </div>
     </details>
 
@@ -384,5 +395,6 @@
   <div class="photo-controls"><button type="button" class="icon-button prev" aria-label="Previous photo"><svg class="icon" aria-hidden="true"><use href="#i-chevron"/></svg></button><p id="photo-caption" aria-live="polite"></p><button type="button" class="icon-button next" aria-label="Next photo"><svg class="icon" aria-hidden="true"><use href="#i-chevron"/></svg></button></div>
 </dialog>
   <script type="module" src="/legae-booking.js"></script>
+  <script type="module" src="/legae-reviews.js"></script>
 </body>
 </html>
