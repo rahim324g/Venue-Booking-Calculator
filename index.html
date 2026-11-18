@@ -31,6 +31,9 @@
   <symbol id="i-close" viewBox="0 0 24 24"><path d="m6 6 12 12M18 6 6 18"/></symbol>
   <symbol id="i-menu" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></symbol>
   <symbol id="i-chevron" viewBox="0 0 24 24"><path d="m8 5 7 7-7 7"/></symbol>
+  <symbol id="i-payment" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 10h18M7 15h4"/></symbol>
+  <symbol id="i-photo" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8" cy="8" r="1.5"/><path d="m3 17 5-5 4 4 4-6 5 7"/></symbol>
+  <symbol id="i-document" viewBox="0 0 24 24"><path d="M14 3H5v18h14V8zM14 3v5h5M8 12h8M8 16h6"/></symbol>
 </svg>
 <a class="skip" href="#main">Skip to content</a>
 <header class="header">
@@ -49,7 +52,7 @@
   </div>
 </header>
 <main id="main">
-  <section class="hero" aria-labelledby="hero-title">
+  <section class="hero" aria-labelledby="hero-title" aria-roledescription="carousel">
     <div class="wrap hero-content">
       <p class="eyebrow hero-location"><svg class="icon" aria-hidden="true"><use href="#i-pin"/></svg> Gaborone North, Botswana</p>
       <h1 id="hero-title">A garden home in Gaborone.</h1>
@@ -59,7 +62,16 @@
         <a class="text-link" href="#experiences">Explore the property</a>
       </div>
     </div>
-    <img class="hero-image" src="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/688d9861a9e77103fb615b78/deb10df3b_IMG_5137.jpg" alt="Legae Garden Home apartments and poolside patio" width="1024" height="768" fetchpriority="high">
+    <img class="hero-image hero-slide is-active" src="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/688d9861a9e77103fb615b78/deb10df3b_IMG_5137.jpg" alt="Legae Garden Home apartments and poolside patio" width="1024" height="768" fetchpriority="high">
+    <img class="hero-image hero-slide" src="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/688d9861a9e77103fb615b78/ccbd55c2e_IMG_8662.jpg" alt="Outdoor swimming pool at Legae Garden Home" width="1024" height="768" decoding="async">
+    <img class="hero-image hero-slide" src="https://i.postimg.cc/5NzW2BkS/661a70f915418e8416a6b7e5d18a0d9f.png" alt="Open garden lawn at Legae Garden Home" width="1280" height="960" decoding="async">
+    <div class="wrap hero-controls" hidden>
+      <div class="hero-control-buttons" role="group" aria-label="Property slideshow">
+        <button class="icon-button" id="hero-previous" type="button" aria-label="Previous property photo"><svg class="icon" aria-hidden="true"><use href="#i-chevron"/></svg></button>
+        <button class="slideshow-pause" id="hero-pause" type="button" aria-pressed="false">Pause photos</button>
+        <button class="icon-button" id="hero-next" type="button" aria-label="Next property photo"><svg class="icon" aria-hidden="true"><use href="#i-chevron"/></svg></button>
+      </div>
+    </div>
   </section>
 
   <section class="wrap booking-wrap" id="book" aria-labelledby="booking-title">
@@ -128,8 +140,15 @@
         </div>
       </div>
     </details>
-    <details class="calendar-panel payment-panel" id="payment-details" open>
-      <summary>Payment details</summary>
+        <p class="booking-policy">Before booking, read the <a href="#rules">house rules and terms</a>.</p>
+  </section>
+
+
+  <section class="wrap info-grid" aria-label="Property and booking information">
+    <details class="info-card" id="payment-details" name="property-information">
+      <summary><svg class="icon" aria-hidden="true"><use href="#i-payment"/></svg><h2 id="payment-details-title">Payment details</h2></summary>
+      <div class="info-card-content">
+
       <div class="payment-content">
         <div class="payment-methods">
           <section aria-labelledby="bank-payment-title">
@@ -153,15 +172,42 @@
         </div>
         <p class="payment-reference">Please use the invoice number as your payment reference.</p>
       </div>
+    
+      </div>
     </details>
-    <p class="booking-policy">Before booking, read the <a href="#rules">house rules and terms</a>.</p>
-  </section>
+    <details class="info-card" id="visit" name="property-information">
+      <summary><svg class="icon" aria-hidden="true"><use href="#i-pin"/></svg><h2 id="directions-title">Directions & contact</h2></summary>
+      <div class="info-card-content">
+<div class="visit-layout">
+      <div class="visit-copy">
+        <h2 id="visit-title">Find us</h2>
+        <p class="location-line"><svg class="icon" aria-hidden="true"><use href="#i-pin"/></svg> Gaborone North, Botswana</p>
+        <div class="visit-actions">
+          <a class="button green" href="https://www.google.com/maps/dir/?api=1&amp;destination=-24.5267918%2C25.9787232" target="_blank" rel="noopener">Get directions <svg class="icon" aria-hidden="true"><use href="#i-out"/></svg></a>
+          <a class="button outline" href="https://wa.me/26771252032?text=Hello%2C%20I%20would%20like%20to%20enquire%20about%20Legae%20Garden%20Home." target="_blank" rel="noopener"><svg class="icon" aria-hidden="true"><use href="#i-chat"/></svg> WhatsApp</a>
+        </div>
+        <address class="contact-links">
+          <div><a href="tel:+26771252032">+267 71 252 032</a><span aria-hidden="true"> / </span><a href="tel:+26776574262">+267 76 574 262</a></div>
+          <a href="mailto:legaegardenhome@gmail.com">legaegardenhome@gmail.com</a>
+        </address>
+        <details class="directions">
+          <summary>Driving directions from Phakalane</summary>
+          <ol>
+            <li>Continue from the Phakalane traffic light to the second traffic light near Oodi.</li>
+            <li>Turn left and continue past the Mmamashia Water Treatment Plant on your right.</li>
+            <li>Turn before the long wall on your left and follow it to the end.</li>
+            <li>Turn left, then immediately right. Legae Garden Home is the second house on your right.</li>
+          </ol>
+        </details>
+      </div>
+      <img src="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/688d9861a9e77103fb615b78/a41eb5264_IMG_5136.jpg" alt="Driveway and entrance at Legae Garden Home" loading="lazy" width="1024" height="768">
+    </div>
+      </div>
+    </details>
+    <details class="info-card" id="experiences" name="property-information">
+      <summary><svg class="icon" aria-hidden="true"><use href="#i-bed"/></svg><h2 id="experiences-title">Stay, gather or swim</h2></summary>
+      <div class="info-card-content">
 
-
-  <div class="property-section">
-    <div class="wrap property-panels">
-      <details class="property-panel" id="experiences">
-        <summary><h2 id="experiences-title">Stay, gather or swim</h2></summary>
         <div class="property-panel-content">
           <div class="experience-grid">
             <article class="card">
@@ -198,23 +244,26 @@
             <li><svg class="icon" aria-hidden="true"><use href="#i-leaf"/></svg> Garden</li>
           </ul>
         </div>
-      </details>
-      <details class="property-panel" id="gallery">
-        <summary><h2 id="gallery-title">Around the property</h2></summary>
+      
+      </div>
+    </details>
+    <details class="info-card" id="gallery" name="property-information">
+      <summary><svg class="icon" aria-hidden="true"><use href="#i-photo"/></svg><h2 id="gallery-title">Around the property</h2></summary>
+      <div class="info-card-content">
+
         <div class="property-panel-content gallery-grid">
           <a href="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/688d9861a9e77103fb615b78/dcd136c3a_IMG_5101.jpg" aria-label="View living and dining room photo"><img src="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/688d9861a9e77103fb615b78/dcd136c3a_IMG_5101.jpg" alt="Living and dining room in one of the apartments" loading="lazy"><span>Living &amp; dining <svg class="icon" aria-hidden="true"><use href="#i-out"/></svg></span></a>
           <a href="https://i.postimg.cc/ncWr6G9g/d47270caf5ff09779eabafe3b2f775aa.png" aria-label="View self-catering kitchen photo"><img src="https://i.postimg.cc/ncWr6G9g/d47270caf5ff09779eabafe3b2f775aa.png" alt="Self-catering kitchen with fridge and washing machine" loading="lazy"><span>Kitchen <svg class="icon" aria-hidden="true"><use href="#i-out"/></svg></span></a>
           <a href="https://i.postimg.cc/SRWRfpmp/IMG-8664.jpg" aria-label="View outdoor seating photo"><img src="https://i.postimg.cc/SRWRfpmp/IMG-8664.jpg" alt="Outdoor table and chairs by the braai area" loading="lazy"><span>Outdoor seating <svg class="icon" aria-hidden="true"><use href="#i-out"/></svg></span></a>
           <a href="https://i.postimg.cc/L8HSQqxp/518768688.png" aria-label="View pool terrace photo"><img src="https://i.postimg.cc/L8HSQqxp/518768688.png" alt="The outdoor swimming pool and terrace" loading="lazy"><span>Pool terrace <svg class="icon" aria-hidden="true"><use href="#i-out"/></svg></span></a>
         </div>
-      </details>
-    </div>
-  </div>
-
-  <section class="rules-section" id="rules" aria-labelledby="rules-title">
-    <div class="wrap rules-layout">
-      <div class="rules-intro">
-        <h2 id="rules-title">House rules</h2>
+      
+      </div>
+    </details>
+    <details class="info-card" id="rules" name="property-information">
+      <summary><svg class="icon" aria-hidden="true"><use href="#i-menu"/></svg><h2 id="rules-title">House rules</h2></summary>
+      <div class="info-card-content">
+<div class="rules-intro">
         <div class="noise-rule">
           <h3>No loud music</h3>
           <p>This applies at all times, including private events and pool visits. Quiet hours are <strong>10:30 pm to 8:00 am</strong>. Please keep noise low and respect our neighbours.</p>
@@ -224,8 +273,12 @@
           <div><dt>Check-out</dt><dd>10:30 am</dd></div>
         </dl>
       </div>
-      <div class="policies">
-        <h3 id="terms-title">Terms and conditions</h3>
+      </div>
+    </details>
+    <details class="info-card" id="terms" name="property-information">
+      <summary><svg class="icon" aria-hidden="true"><use href="#i-document"/></svg><h2 id="terms-title">Terms and conditions</h2></summary>
+      <div class="info-card-content">
+<div class="policies">
         <details id="booking-terms">
           <summary>Booking, payment and arrival</summary>
           <ul>
@@ -279,35 +332,10 @@
           </ul>
         </details>
       </div>
-    </div>
+      </div>
+    </details>
   </section>
 
-  <section class="wrap visit" id="visit" aria-labelledby="visit-title">
-    <div class="visit-layout">
-      <div class="visit-copy">
-        <h2 id="visit-title">Find us</h2>
-        <p class="location-line"><svg class="icon" aria-hidden="true"><use href="#i-pin"/></svg> Gaborone North, Botswana</p>
-        <div class="visit-actions">
-          <a class="button green" href="https://www.google.com/maps/dir/?api=1&amp;destination=-24.5267918%2C25.9787232" target="_blank" rel="noopener">Get directions <svg class="icon" aria-hidden="true"><use href="#i-out"/></svg></a>
-          <a class="button outline" href="https://wa.me/26771252032?text=Hello%2C%20I%20would%20like%20to%20enquire%20about%20Legae%20Garden%20Home." target="_blank" rel="noopener"><svg class="icon" aria-hidden="true"><use href="#i-chat"/></svg> WhatsApp</a>
-        </div>
-        <address class="contact-links">
-          <div><a href="tel:+26771252032">+267 71 252 032</a><span aria-hidden="true"> / </span><a href="tel:+26776574262">+267 76 574 262</a></div>
-          <a href="mailto:legaegardenhome@gmail.com">legaegardenhome@gmail.com</a>
-        </address>
-        <details class="directions">
-          <summary>Driving directions from Phakalane</summary>
-          <ol>
-            <li>Continue from the Phakalane traffic light to the second traffic light near Oodi.</li>
-            <li>Turn left and continue past the Mmamashia Water Treatment Plant on your right.</li>
-            <li>Turn before the long wall on your left and follow it to the end.</li>
-            <li>Turn left, then immediately right. Legae Garden Home is the second house on your right.</li>
-          </ol>
-        </details>
-      </div>
-      <img src="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/688d9861a9e77103fb615b78/a41eb5264_IMG_5136.jpg" alt="Driveway and entrance at Legae Garden Home" loading="lazy" width="1024" height="768">
-    </div>
-  </section>
 </main>
 <footer>
   <div class="wrap footer-row">
