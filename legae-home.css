@@ -378,6 +378,8 @@ body:has(dialog[open]) { overflow: hidden; }
 .review-help { margin-top: 10px; color: var(--muted); font-size: 13px; }
 
 #published-reviews:not(:empty) { margin-bottom: 24px; }
+#published-reviews .review-quote { overflow-wrap: anywhere; }
+#published-reviews blockquote { white-space: pre-wrap; }
 .review-rating { margin-bottom: 8px; color: var(--green); font-size: 13px; font-weight: 700; }
 .review-quote h4 { margin: 0 0 7px; font-size: 16px; font-weight: 600; }
 .guest-review-form { display: grid; gap: 13px; max-width: 680px; margin-top: 25px; padding-top: 23px; border-top: 1px solid var(--line); }
