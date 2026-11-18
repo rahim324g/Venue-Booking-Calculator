@@ -1,5 +1,5 @@
 / /index.html 200
 /assets/* https://6abe030abe137754313d229e--legaegardenhome.netlify.app/assets/:splat 200
-/admin /legacy.html 200
-/admin/* /legacy.html 200
+/admin https://legae-garden-guest-manager-fb615b78.base44.app/ 302
+/admin/* https://legae-garden-guest-manager-fb615b78.base44.app/ 302
 /* /legacy.html 200
