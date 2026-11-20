@@ -88,13 +88,13 @@
             <select id="booking-type" name="type"><option value="stay">Accommodation</option><option value="event">Private event</option><option value="pool">Pool visit</option></select>
           </div>
           <div class="booking-fields" data-fields="stay">
-            <div class="booking-field"><label for="apartment">Apartment</label><select id="apartment" name="apartment"><option value="3">Apartment 1</option><option value="4">Apartment 2</option><option value="both">Both apartments</option></select></div>
+            <div class="booking-field"><label for="apartment">Apartment</label><select id="apartment" name="apartment" aria-describedby="apartment-details"><option value="3">Apartment 1</option><option value="4">Apartment 2</option><option value="both">Both apartments</option></select></div>
             <div class="booking-field"><label for="nights">Nights</label><input type="number" id="nights" name="nights" value="1" min="1" step="1" required></div>
             <div class="booking-field"><label for="stay-guests">Number of people</label><input type="number" id="stay-guests" name="stay-guests" value="1" min="1" step="1" required></div>
           </div>
           <div class="booking-fields" data-fields="event" hidden>
             <div class="booking-field"><label for="event-guests">Event guests</label><input type="number" id="event-guests" name="event-guests" value="10" min="1" max="50" step="1" required disabled></div>
-            <div class="booking-field"><label for="event-apartments">Accommodation</label><select id="event-apartments" name="event-apartments" disabled><option value="0">Venue only</option><option value="1" selected>1 apartment</option><option value="2">2 apartments</option></select></div>
+            <div class="booking-field"><label for="event-apartments">Accommodation</label><select id="event-apartments" name="event-apartments" aria-describedby="apartment-details" disabled><option value="0">Venue only</option><option value="1" selected>1 apartment</option><option value="2">2 apartments</option></select></div>
           </div>
           <div class="booking-fields pool-fields" data-fields="pool" hidden>
             <div class="booking-field"><label for="pool-adults">Adults</label><input type="number" id="pool-adults" name="pool-adults" value="1" min="0" step="1" required disabled></div>
@@ -103,6 +103,10 @@
             <label class="braai-option"><input type="checkbox" name="pool-braai" disabled> Add braai use</label>
           </div>
         </form>
+        <div class="apartment-details" id="apartment-details" role="status" aria-live="polite" aria-atomic="true">
+          <strong id="apartment-details-name">Apartment 1</strong>
+          <p id="apartment-details-rooms">2 bedrooms · 1 equipped kitchen · 1 living room · 2 bathrooms</p>
+        </div>
         <p class="calculator-note" id="calculator-note">One apartment includes 4 people. Extra guests cost BWP 100 per person per night.</p>
         <noscript><p class="calculator-note">Enable JavaScript to calculate an estimate for your selection.</p></noscript>
       </div>
