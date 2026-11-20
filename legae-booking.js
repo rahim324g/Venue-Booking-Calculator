@@ -27,6 +27,9 @@ const fieldGroups = bookingCalculator.querySelectorAll('[data-fields]');
 const estimateTotal = document.querySelector('#estimate-total');
 const estimateLines = document.querySelector('#estimate-lines');
 const calculatorNote = document.querySelector('#calculator-note');
+const apartmentDetails = document.querySelector('#apartment-details');
+const apartmentDetailsName = document.querySelector('#apartment-details-name');
+const apartmentDetailsRooms = document.querySelector('#apartment-details-rooms');
 const bookingFrame = document.querySelector('#booking-frame');
 const calendarPanel = document.querySelector('#calendar');
 const isBoltPreview = window.location.hostname.endsWith('.webcontainer-api.io');
@@ -173,7 +176,26 @@ function renderCalendar({serviceId, selection, note, inquiry, guestCount}, estim
   bookingFrame.title = `Live SimplyBook availability for ${selection}`;
 }
 
+function updateApartmentDetails() {
+  const isStay = bookingType.value === 'stay';
+  const isEvent = bookingType.value === 'event';
+  const selection = field(isStay ? 'apartment' : 'event-apartments');
+  const count = isStay ? (selection.value === 'both' ? 2 : 1) : (isEvent ? Number(selection.value) : 0);
+  apartmentDetails.hidden = count === 0;
+  if (!count) return;
+
+  // Each apartment has the layout described in the property information.
+  apartmentDetailsName.textContent = selection.selectedOptions[0].textContent;
+  apartmentDetailsRooms.textContent = [
+    quantity(count * 2, 'bedroom'),
+    quantity(count, 'equipped kitchen'),
+    quantity(count, 'living room'),
+    quantity(count * 2, 'bathroom'),
+  ].join(' · ');
+}
+
 function updateCalculator() {
+  updateApartmentDetails();
   const valid = bookingCalculator.checkValidity();
   const result = readEstimate(bookingType.value, valid);
   const total = result.lines.reduce((sum, [, price]) => sum + price, 0);
