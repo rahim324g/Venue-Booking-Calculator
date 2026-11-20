@@ -118,6 +118,9 @@ summary::-webkit-details-marker { display: none; }
 .braai-option { grid-column: 1/-1; display: inline-flex; align-items: center; gap: 7px; min-height: 24px; width: fit-content; font-size: 13px; font-weight: 600; cursor: pointer; }
 .braai-option input { width: 16px; height: 16px; margin: 0; accent-color: var(--green); }
 .calculator-note, .booking-policy { margin-top: 12px; color: var(--muted); font-size: 13px; line-height: 1.45; }
+.apartment-details { margin-top: 14px; padding: 11px 13px; border-left: 2px solid var(--accent); border-radius: 0 4px 4px 0; background: var(--tint); font-size: 13px; }
+.apartment-details strong { color: var(--green); font-weight: 600; }
+.apartment-details p { margin-top: 3px; color: var(--muted); line-height: 1.6; }
 .booking-policy a { text-decoration: underline; text-underline-offset: 3px; }
 .estimate { background: var(--green); color: var(--white); border-radius: 3px; padding: 18px 22px; }
 .estimate-label { color: #f1e4bd; font-size: 11px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; }
